@@ -3,6 +3,7 @@
   "name": "IES La Poveda",
   "logo": "logo.jpg",
   "banner": "banner.jpg",
+  "metricsUrl": "https://la-poveda.example.com/api/metrics",
   "images": [
     "img/1.jpg",
     "img/2.jpg",
