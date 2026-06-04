@@ -1,0 +1,17 @@
+{
+  "id": "nombre-del-jardin",
+  "name": "Nombre Descriptivo del Centro o Jardín",
+  "updatedAt": "2026-06-03T10:00:00Z",
+  "logo": "logo.jpg",
+  "banner": "banner.jpg",
+  "metricsUrl": "https://api.ejemplo.com/metrics",
+  "images": [
+    "img/1.jpg",
+    "img/2.jpg",
+    "img/3.jpg"
+  ],
+  "links": {
+    "web": "https://www.ejemplo.es",
+    "instagram": "https://www.instagram.com/usuario_ejemplo"
+  }
+}
