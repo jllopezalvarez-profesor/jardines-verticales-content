@@ -1,0 +1,55 @@
+name: Deploy Pages
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Crear contenido publicado
+        run: |
+          mkdir publish
+
+          cp gardens/index.json publish/
+
+          for d in gardens/*; do
+            if [ -d "$d" ]; then
+              name=$(basename "$d")
+
+              if [ "$name" != "garden-sample" ]; then
+                cp -R "$d" publish/
+              fi
+            fi
+          done
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: publish
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+
+    needs: build
+
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
